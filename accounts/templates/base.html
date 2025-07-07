@@ -4,20 +4,96 @@
     <meta charset="UTF-8">
     <title>{% block title %}User Management{% endblock %}</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-        .container { max-width: 500px; margin: auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px #ddd; }
-        h2 { text-align: center; }
-        form { margin-top: 1em; }
-        button { width: 100%; padding: 0.7em; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 1em; }
-        button:hover { background: #0056b3; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f7f9fc;
+            color: #2d3748;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 2em 2.5em;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #e2e8f0;
+        }
+        h2 {
+            text-align: center;
+            color: #5a67d8;
+            margin-bottom: 1.5em;
+        }
+        form {
+            margin-top: 1em;
+        }
+        label {
+            color: #2d3748;
+            font-weight: 500;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7em;
+            margin: 0.5em 0 1em 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #f7f9fc;
+            font-size: 1em;
+            color: #2d3748;
+        }
+        button {
+            width: 100%;
+            padding: 0.8em;
+            background: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background 0.2s;
+            margin-bottom: 0.5em;
+        }
+        button:hover {
+            background: #434190;
+        }
+        a {
+            color: #5a67d8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            color: #f6ad55;
+        }
+        .success {
+            background: #e6fffa;
+            color: #48bb78;
+            border-left: 5px solid #48bb78;
+            padding: 0.8em 1em;
+            margin-bottom: 1em;
+            border-radius: 6px;
+        }
+        .error {
+            background: #fff5f5;
+            color: #f56565;
+            border-left: 5px solid #f56565;
+            padding: 0.8em 1em;
+            margin-bottom: 1em;
+            border-radius: 6px;
+        }
+        ul.messages {
+            list-style: none;
+            padding: 0;
+        }
+        ul.messages li {
+            margin-bottom: 0.5em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         {% if messages %}
-            <ul>
+            <ul class="messages">
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                    <li class="{{ message.tags }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
