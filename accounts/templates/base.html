@@ -90,6 +90,19 @@
 </head>
 <body>
     <div class="container">
+        <nav style="margin-bottom:1.5em;">
+            {% if user.is_authenticated %}
+                <span style="color:#2d3748;">Welcome, {{ user.username }}!</span>
+                <a href="{% url 'profile' %}" style="margin-left:1em;">Profile</a>
+                {% if user.is_staff %}
+                    <a href="/admin/" style="margin-left:1em; background:#5a67d8;color:#fff;padding:0.3em 1em;border-radius:5px;">Admin</a>
+                {% endif %}
+                <a href="{% url 'logout' %}" style="margin-left:1em; background:#f56565;color:#fff;padding:0.3em 1em;border-radius:5px;">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" style="margin-right:1em;">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}

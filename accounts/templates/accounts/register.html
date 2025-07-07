@@ -5,33 +5,50 @@
 	<title>Register</title>
 </head>
 <body>
-	<h2>Register</h2>
-    {% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-      {{ message }}
+	{% block content %}
+  <h2>Register</h2>
+  <form method="post" style="margin-bottom:1.5em;">
+    {% csrf_token %}
+    <div style="margin-bottom:1em;">
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {% if form.username.errors %}
+        <div class="error">{{ form.username.errors }}</div>
+      {% endif %}
     </div>
-  {% endfor %}
-{% endif %}
-
-{% if form.errors %}
-  <div class="alert alert-danger">
-    <ul>
-      {% for field in form %}
-        {% for error in field.errors %}
-          <li>{{ field.label }}: {{ error }}</li>
-        {% endfor %}
-      {% endfor %}
-      {% for error in form.non_field_errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
+    <div style="margin-bottom:1em;">
+      {{ form.email.label_tag }}
+      {{ form.email }}
+      {% if form.email.errors %}
+        <div class="error">{{ form.email.errors }}</div>
+      {% endif %}
+    </div>
+    <div style="margin-bottom:1em;">
+      {{ form.phone.label_tag }}
+      {{ form.phone }}
+      {% if form.phone.errors %}
+        <div class="error">{{ form.phone.errors }}</div>
+      {% endif %}
+    </div>
+    <div style="margin-bottom:1em;">
+      {{ form.password1.label_tag }}
+      {{ form.password1 }}
+      {% if form.password1.errors %}
+        <div class="error">{{ form.password1.errors }}</div>
+      {% endif %}
+    </div>
+    <div style="margin-bottom:1em;">
+      {{ form.password2.label_tag }}
+      {{ form.password2 }}
+      {% if form.password2.errors %}
+        <div class="error">{{ form.password2.errors }}</div>
+      {% endif %}
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <div style="text-align:center; margin-top:1em;">
+    <a href="{% url 'login' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Already have an account? Login</a>
   </div>
-{% endif %}
-	<form method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Register</button>
-	</form>
+{% endblock %}
 </body>
 </html>
