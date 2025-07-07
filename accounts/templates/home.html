@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to User Management</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1 style="text-align:center; color:#5a67d8;">Welcome to the User Management System!</h1>
+        <p style="text-align:center;">This is your home page.</p>
+        <div style="text-align:center; margin-top:2em;">
+            {% if user.is_authenticated %}
+                Hello, {{ user.username }}! <a href="{% url 'profile' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">View Profile</a> | <a href="{% url 'logout' %}" style="background:#f56565;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Logout</a>
+            {% else %}
+                <a href="{% url 'register' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Register</a> | <a href="{% url 'login' %}" style="background:#f6ad55;color:#2d3748;padding:0.5em 1.2em;border-radius:5px;">Login</a>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>

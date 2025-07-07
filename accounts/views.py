@@ -9,7 +9,11 @@ from .forms import EditProfile
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 
-
+def home(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
+    else:
+        return redirect('login')
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
