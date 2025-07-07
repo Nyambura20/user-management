@@ -1,3 +1,9 @@
 asgiref==3.9.0
 Django==5.2.4
 sqlparse==0.5.3
+gunicorn
+# For image uploads and Pillow support (optional, recommended for user avatars)
+Pillow
+# For testing (optional, but useful)
+pytest
+django-extensions
