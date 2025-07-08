@@ -36,7 +36,7 @@ python manage.py runserver
 Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
 ## Features
-- User registration with email verification (mocked)
+- User registration with email verification
 - Login and logout
 - Profile view and edit
 - Change password
