@@ -1,16 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
   <h2>Profile</h2>
-  <div style="margin-bottom:1.5em;">
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>First name:</strong> {{ user.first_name }}</p>
-    <p><strong>Last name:</strong> {{ user.last_name }}</p>
-    <p><strong>Phone:</strong> {{ user.phone }}</p>
-  </div>
-  <div style="display:flex; gap:1em; justify-content:center;">
-    <a href="{% url 'edit_profile' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Edit Profile</a>
-    <a href="{% url 'change_password' %}" style="background:#f6ad55;color:#2d3748;padding:0.5em 1.2em;border-radius:5px;">Change Password</a>
-    <a href="{% url 'logout' %}" style="background:#f56565;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Logout</a>
-  </div>
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>First name: {{ user.first_name }}</p>
+  <p>Last name: {{ user.last_name }}</p>
+  <p>Phone: {{ user.phone }}</p>
+  <a href="{% url 'edit_profile' %}">Edit Profile</a> |
+  <a href="{% url 'change_password' %}">Change Password</a> |
+  <a href="{% url 'logout' %}">Logout</a>
 {% endblock %}

@@ -6,49 +6,114 @@
 </head>
 <body>
 	{% block content %}
-  <h2>Register</h2>
-  <form method="post" style="margin-bottom:1.5em;">
+  <h2 style="text-align:center;">Register</h2>
+  {% if form.non_field_errors %}
+    <div class="error">{{ form.non_field_errors }}</div>
+  {% endif %}
+  <form method="post" class="register-form">
     {% csrf_token %}
-    <div style="margin-bottom:1em;">
+    <div class="form-group">
       {{ form.username.label_tag }}
       {{ form.username }}
-      {% if form.username.errors %}
-        <div class="error">{{ form.username.errors }}</div>
-      {% endif %}
+      {% for error in form.username.errors %}
+        <div class="error">{{ error }}</div>
+      {% endfor %}
     </div>
-    <div style="margin-bottom:1em;">
+    <div class="form-group">
       {{ form.email.label_tag }}
       {{ form.email }}
-      {% if form.email.errors %}
-        <div class="error">{{ form.email.errors }}</div>
-      {% endif %}
+      {% for error in form.email.errors %}
+        <div class="error">{{ error }}</div>
+      {% endfor %}
     </div>
-    <div style="margin-bottom:1em;">
+    <div class="form-group">
       {{ form.phone.label_tag }}
       {{ form.phone }}
-      {% if form.phone.errors %}
-        <div class="error">{{ form.phone.errors }}</div>
-      {% endif %}
+      {% for error in form.phone.errors %}
+        <div class="error">{{ error }}</div>
+      {% endfor %}
     </div>
-    <div style="margin-bottom:1em;">
+    <div class="form-group">
       {{ form.password1.label_tag }}
       {{ form.password1 }}
-      {% if form.password1.errors %}
-        <div class="error">{{ form.password1.errors }}</div>
-      {% endif %}
+      {% for error in form.password1.errors %}
+        <div class="error">{{ error }}</div>
+      {% endfor %}
     </div>
-    <div style="margin-bottom:1em;">
+    <div class="form-group">
       {{ form.password2.label_tag }}
       {{ form.password2 }}
-      {% if form.password2.errors %}
-        <div class="error">{{ form.password2.errors }}</div>
-      {% endif %}
+      {% for error in form.password2.errors %}
+        <div class="error">{{ error }}</div>
+      {% endfor %}
     </div>
-    <button type="submit">Register</button>
+    <button type="submit" class="register-btn">Register</button>
   </form>
   <div style="text-align:center; margin-top:1em;">
-    <a href="{% url 'login' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Already have an account? Login</a>
+    <a href="{% url 'login' %}" class="register-login-link">Already have an account? Login</a>
   </div>
 {% endblock %}
+<style>
+.register-form {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2em 2.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #e2e8f0;
+}
+.form-group {
+  margin-bottom: 1.2em;
+}
+label {
+  color: #2d3748;
+  font-weight: 500;
+}
+input {
+  width: 100%;
+  padding: 0.7em;
+  margin: 0.5em 0 0 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f7f9fc;
+  font-size: 1em;
+  color: #2d3748;
+}
+.register-btn {
+  width: 100%;
+  padding: 0.8em;
+  background: #5a67d8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background 0.2s;
+  margin-bottom: 0.5em;
+}
+.register-btn:hover {
+  background: #434190;
+}
+.register-login-link {
+  background: #5a67d8;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.register-login-link:hover {
+  background: #f6ad55;
+  color: #2d3748;
+}
+.error {
+  background: #fff5f5;
+  color: #f56565;
+  border-left: 5px solid #f56565;
+  padding: 0.5em 1em;
+  margin-bottom: 0.5em;
+  border-radius: 6px;
+  font-size: 0.98em;
+}
+</style>
 </body>
 </html>

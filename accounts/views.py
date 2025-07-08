@@ -8,12 +8,12 @@ from django.contrib.auth.decorators import login_required
 from .forms import EditProfile
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
+from django.core.mail import send_mail
+from django.conf import settings
 
 def home(request):
-    if request.user.is_authenticated:
-        return redirect('profile')
-    else:
-        return redirect('login')
+    return render(request, 'home.html')
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -25,9 +25,16 @@ def register(request):
             verification_link = request.build_absolute_uri(
                 f"/accounts/verify/{user.verification_token}/"
             )
-            print(f"Verification link for {user.email}: {verification_link}")
-            messages.success(request, "Account created! Please check your email to verify your account.")
-            return redirect('login')
+            # Send real email
+            send_mail(
+                'Verify your account',
+                f'Click the link to verify your account: {verification_link}',
+                settings.DEFAULT_FROM_EMAIL,
+                [user.email],
+                fail_silently=False,
+            )
+            messages.success(request, f"Welcome {user.username}! Please check your email to verify your account.")
+            return redirect('home')
         else:
             messages.error(request, "There was an error with your form.")
     else:

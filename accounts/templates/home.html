@@ -4,18 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to User Management</title>
+    <style>
+        .home-hero {
+            max-width: 600px;
+            margin: 80px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #e2e8f0;
+            padding: 3em 2em 2.5em 2em;
+            text-align: center;
+        }
+        .home-hero h1 {
+            color: #5a67d8;
+            font-size: 2.3em;
+            margin-bottom: 0.4em;
+            letter-spacing: 1px;
+        }
+        .home-hero p {
+            color: #2d3748;
+            font-size: 1.18em;
+            margin-bottom: 2.2em;
+        }
+        .home-actions {
+            margin-top: 2em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8em 2.2em;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #e2e8f0;
+            margin: 0 0.5em;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #5a67d8;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #434190;
+        }
+        .btn-accent {
+            background: #f6ad55;
+            color: #2d3748;
+        }
+        .btn-accent:hover {
+            background: #f2994a;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     {% extends "base.html" %}
     {% block content %}
-        <h1 style="text-align:center; color:#5a67d8;">Welcome to the User Management System!</h1>
-        <p style="text-align:center;">This is your home page.</p>
-        <div style="text-align:center; margin-top:2em;">
-            {% if user.is_authenticated %}
-                Hello, {{ user.username }}! <a href="{% url 'profile' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">View Profile</a> | <a href="{% url 'logout' %}" style="background:#f56565;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Logout</a>
-            {% else %}
-                <a href="{% url 'register' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Register</a> | <a href="{% url 'login' %}" style="background:#f6ad55;color:#2d3748;padding:0.5em 1.2em;border-radius:5px;">Login</a>
-            {% endif %}
+        <div class="home-hero">
+            <h1>Welcome to User Management System!</h1>
+            <p>Please register or login to continue.</p>
+            <div class="home-actions">
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+                <a href="{% url 'login' %}" class="btn btn-accent">Login</a>
+            </div>
         </div>
     {% endblock %}
 </body>

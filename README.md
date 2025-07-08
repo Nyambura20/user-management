@@ -49,10 +49,10 @@ Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 ![runserver](screenshots/runserver.jpeg)
 
 ### Registration Page
-![register](screenshots/register.jpeg)
+![register](screenshots/register.png)
 
 ### Login Page
-![login](screenshots/login.jpeg)
+![login](screenshots/login.png)
 
 ### Profile View
 ![profile](screenshots/profile.png)

@@ -4,7 +4,13 @@
   <form method="post" style="margin-bottom:1.5em;">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button type="submit" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Save</button>
   </form>
   <a href="{% url 'profile' %}" style="background:#5a67d8;color:#fff;padding:0.5em 1.2em;border-radius:5px;">Back to Profile</a>
+  <div style="display:flex;justify-content:center;margin-top:2em;">
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" style="background:linear-gradient(90deg,#f56565 60%,#c53030 100%);color:#fff;padding:0.5em 1.2em;border-radius:5px;border:none;box-shadow:0 2px 8px #fbb6b6;">Logout</button>
+    </form>
+  </div>
 {% endblock %}
