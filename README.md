@@ -73,6 +73,3 @@ Run all tests with:
 python manage.py test accounts
 ```
 
-## License
-
-MIT License
