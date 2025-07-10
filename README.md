@@ -36,7 +36,7 @@ python manage.py runserver
 Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
 ## Features
-- User registration with email verification (mocked)
+- User registration with email verification
 - Login and logout
 - Profile view and edit
 - Change password
@@ -73,6 +73,7 @@ Run all tests with:
 python manage.py test accounts
 ```
 
+<<<<<<< HEAD
 ## License
 
 MIT License
@@ -100,3 +101,5 @@ MIT License
   - **tests.py**: Automated tests for user features.
 - **static/**: (If present) Static files like CSS, JS, images.
 - **db.sqlite3**: SQLite database file (created after running migrations).
+=======
+>>>>>>> 4d1475a35ab80c075f2f6f5ff5a2ebc329a4bbfb

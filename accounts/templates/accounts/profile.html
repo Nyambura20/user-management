@@ -8,7 +8,7 @@
   <p>Phone: {{ user.phone }}</p>
   <a href="{% url 'edit_profile' %}">Edit Profile</a> |
   <a href="{% url 'change_password' %}">Change Password</a> |
-  {# Only use a POST form for logout, never a link #}
+git  {# Only use a POST form for logout, never a link #}
   <form action="{% url 'logout' %}" method="post" style="display:inline; margin:0;">
     {% csrf_token %}
     <button type="submit" class="profile-btn profile-btn-logout">Logout</button>
