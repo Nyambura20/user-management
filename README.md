@@ -76,3 +76,27 @@ python manage.py test accounts
 ## License
 
 MIT License
+
+## Project File Overview
+
+- **manage.py**: Django's command-line utility for administrative tasks (runserver, migrate, createsuperuser, etc).
+- **requirements.txt**: Lists all Python dependencies needed to run the project.
+- **README.md**: Project documentation, setup instructions, and screenshots.
+- **usermanagement/**: Main Django project folder.
+  - **__init__.py**: Marks this directory as a Python package.
+  - **settings.py**: Main configuration file (database, installed apps, email, etc).
+  - **urls.py**: Root URL configuration for the project.
+  - **wsgi.py**: WSGI entry point for deployment.
+  - **asgi.py**: ASGI entry point for async servers.
+- **accounts/**: Main app for user management.
+  - **admin.py**: Registers custom user model and other models with Django admin.
+  - **apps.py**: App configuration.
+  - **forms.py**: Custom forms for registration, profile editing, and password change.
+  - **models.py**: Custom user model and any additional models.
+  - **views.py**: All logic for registration, login, profile, email verification, etc.
+  - **urls.py**: URL patterns for user-related pages (register, login, profile, etc).
+  - **templates/accounts/**: HTML templates for all user pages (register, login, profile, etc).
+  - **migrations/**: Database migration files for the app.
+  - **tests.py**: Automated tests for user features.
+- **static/**: (If present) Static files like CSS, JS, images.
+- **db.sqlite3**: SQLite database file (created after running migrations).

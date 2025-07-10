@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from .forms import EditProfile
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, LoginView
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.conf import settings
@@ -72,4 +72,12 @@ class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('profile')
     def form_valid(self, form):
         messages.success(self.request, "Password changed successfully.")
+        return super().form_valid(form)
+
+class CustomLoginView(LoginView):
+    def form_valid(self, form):
+        user = form.get_user()
+        if not user.is_verified:
+            messages.error(self.request, "Please verify your email before logging in.")
+            return redirect('login')
         return super().form_valid(form)
